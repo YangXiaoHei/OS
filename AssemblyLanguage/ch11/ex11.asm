@@ -26,19 +26,19 @@ letterc:
     push ax
 
 lo:
-    cmp byte ptr [si], 0
+    cmp byte ptr [si], 0        ; if (str[i] == 0) goto finish
     je finish
-    cmp byte ptr [si], 'a'
+    cmp byte ptr [si], 'a'      ; if (str[i] < 'a') goto ignore
     jb ignore
-    cmp byte ptr [si], 'z'
+    cmp byte ptr [si], 'z'      ; if (str[i] > 'z') goto ignore
     ja ignore
 
     mov al, [si]
-    and al, 11011111b
-    mov [si], al
+    and al, 11011111b           
+    mov [si], al                ; str[i] = toupper(str[i]);
 ignore:
-    inc si
-    jmp short lo
+    inc si                      ; ++i
+    jmp short lo                ; goto lo
 finish:
     pop ax
     ret
