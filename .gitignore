@@ -55,3 +55,5 @@ CSAPP/第二章 信息的表示和处理/progs/convert
 CSAPP/第二章 信息的表示和处理/progs/showbytes
 CSAPP/第二章 信息的表示和处理/progs/.exchange_by_xor.c.swp
 CSAPP/第二章 信息的表示和处理/progs/exchange_by_xor
+CSAPP/第二章 信息的表示和处理/progs/buggy_tadd_ok
+CSAPP/第二章 信息的表示和处理/progs/test_tadd_ok
