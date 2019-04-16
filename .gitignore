@@ -53,3 +53,5 @@ dkms.conf
 CSAPP/深入理解计算机系统（原书第三版）.pdf
 CSAPP/第二章 信息的表示和处理/progs/convert
 CSAPP/第二章 信息的表示和处理/progs/showbytes
+CSAPP/第二章 信息的表示和处理/progs/.exchange_by_xor.c.swp
+CSAPP/第二章 信息的表示和处理/progs/exchange_by_xor
