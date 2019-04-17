@@ -57,3 +57,5 @@ CSAPP/第二章 信息的表示和处理/progs/.exchange_by_xor.c.swp
 CSAPP/第二章 信息的表示和处理/progs/exchange_by_xor
 CSAPP/第二章 信息的表示和处理/progs/buggy_tadd_ok
 CSAPP/第二章 信息的表示和处理/progs/test_tadd_ok
+CSAPP/第二章 信息的表示和处理/progs/test_tsub_ok
+CSAPP/第二章 信息的表示和处理/progs/tmul_test_overflow_and_truncation
