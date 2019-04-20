@@ -3,45 +3,73 @@
 
 #ifndef YXH_TYPE_DEF
 #define YXH_TYPE_DEF
-typedef unsigned long      TUINT64;
-typedef unsigned           TUINT32;
-typedef long long          TINT128;
 typedef long               TINT64;
 typedef int                TINT32;
-typedef unsigned short     TUINT16;
-typedef unsigned char      TUINT8;
 typedef short              TINT16;
 typedef char               TINT8;
+
+typedef unsigned long      TUINT64;
+typedef unsigned int       TUINT32;
+typedef unsigned short     TUINT16;
+typedef unsigned char      TUINT8;
+
+typedef struct float_t {
+    unsigned int m : 23;
+    unsigned short e : 8;  /* 这里如果定义为 char 型，编译器会生成错误的代码 */
+    unsigned char s : 1;
+} float_t;
+
+typedef struct double_t {
+    unsigned long m : 52;
+    unsigned short e : 11;
+    unsigned char s : 1;
+} double_t;
 #else
 #error "what a fuck?!"
 #endif
 
 typedef enum EN_BIN_TOOL_TYPE {
-    ignore_leading  = 1 << 0,
+    ignore     = 1 << 0,
     four       = 1 << 1,
     eight      = 1 << 2
 } EN_BIN_TOOL_TYPE;
 
+const char *f32(float a);
+const char *d64(double a);
+float tof32(const char *binary);
+double tod64(const char *binary);
+
+const char *i64(TINT64);
+const char *i32(TINT32);
+const char *i16(TINT16);
+const char *i8(TINT8);
+
+/*************** 补码 ********************/
+TINT64 toi64(const char *binary);
+TINT32 toi32(const char *binary);
+TINT16 toi16(const char *binary);
+TINT8 toi8(const char *binary);
+
+/*************** 无符号数 ********************/
+TUINT64 tou64(const char *binary);
+TUINT32 tou32(const char *binary);
+TUINT16 tou16(const char *binary);
+TUINT8 tou8(const char *binary);
+
+/****************** 原有的接口 *************************/
+TINT64 binaryStringTo64(const char *binary);
+TINT32 binaryStringTo32(const char *binary);
+TINT16 binaryStringTo16(const char *binary);
+TINT8 binaryStringTo8(const char *binary);
+
 TUINT64 binaryStringToU64(const char *binary);
-TINT64 binaryStringToI64(const char *binary);
 TUINT32 binaryStringToU32(const char *binary);
-TINT32 binaryStringToI32(const char *binary);
 TUINT16 binaryStringToU16(const char *binary);
-TINT16 binaryStringToI16(const char *binary);
 TUINT8 binaryStringToU8(const char *binary);
-TINT8 binaryStringToI8(const char *binary);
 
-const char *u64ToBinaryString(TUINT64, EN_BIN_TOOL_TYPE type);
 const char *i64ToBinaryString(TINT64, EN_BIN_TOOL_TYPE type);
-const char *u32ToBinaryString(TUINT32, EN_BIN_TOOL_TYPE type);
 const char *i32ToBinaryString(TINT32, EN_BIN_TOOL_TYPE type);
-const char *u16ToBinaryString(TUINT16, EN_BIN_TOOL_TYPE type);
 const char *i16ToBinaryString(TINT16, EN_BIN_TOOL_TYPE type);
-const char *u8ToBinaryString(TUINT8, EN_BIN_TOOL_TYPE type);
 const char *i8ToBinaryString(TINT8, EN_BIN_TOOL_TYPE type);
-
-const char *asciiToBinaryString(unsigned char ascii);
-unsigned char binaryStringToAscii(const char *binary);
-void printAsciiString(const char *asciiString);
 
 #endif
