@@ -34,7 +34,7 @@ const char *_prefix_##ToBinaryString(_intype_ a, EN_BIN_TOOL_TYPE type) \
                                                                 \
     /* 忽略先导零 */                                              \
     if (type & ignore)                          \
-    while(i >= 0 && ((a >> i) & 1) == 0) i--;                   \
+    while(i > 0 && ((a >> i) & 1) == 0) i--;                   \
                                                                 \
     /* 拼完 0 1 串 */                                            \
     while(i >= 0)                                               \
