@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "bin_tool.h"
+#include "../../bin_tool.h"
 
 int main(int argc, char *argv[])
 {

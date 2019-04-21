@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "bin_tool.h"
+#include "../../bin_tool.h"
 
 #define INT_MAX 2147483647
 #define INT_MIN (-INT_MAX-1)
