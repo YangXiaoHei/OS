@@ -43,6 +43,10 @@ const char *i64(TINT64);
 const char *i32(TINT32);
 const char *i16(TINT16);
 const char *i8(TINT8);
+const char *i64_(TINT64);
+const char *i32_(TINT32);
+const char *i16_(TINT16);
+const char *i8_(TINT8);
 
 /*************** 补码 ********************/
 TINT64 toi64(const char *binary);

@@ -132,6 +132,25 @@ const char *i8(TINT8 a)
     return i8ToBinaryString(a, eight | ignore);
 }
 
+const char *i64_(TINT64 a)
+{
+    return i64ToBinaryString(a, eight);
+}
+
+const char *i32_(TINT32 a)
+{
+    return i32ToBinaryString(a, eight);
+}
+
+const char *i16_(TINT16 a)
+{
+    return i16ToBinaryString(a, eight);
+}
+
+const char *i8_(TINT8 a)
+{
+    return i8ToBinaryString(a, eight);
+}
 /*********************** 无符号数 ****************************/
 TUINT64 tou64(const char *binary)
 {
