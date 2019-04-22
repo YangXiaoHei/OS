@@ -28,6 +28,15 @@ typedef struct double_t {
 #error "what a fuck?!"
 #endif
 
+/*
+ * xxxx OF DF IF TF SF ZF x AF x PF x CF
+ */
+#define GET_PF(_flags_) ((_flags_ >> 2) & 1)
+#define GET_SF(_flags_) ((_flags_ >> 7) & 1)
+#define GET_ZF(_flags_) ((_flags_ >> 6) & 1)
+#define GET_OF(_flags_) ((_flags_ >> 11) & 1)
+#define GET_CF(_flags_) (_flags_ & 1)
+
 typedef enum EN_BIN_TOOL_TYPE {
     ignore     = 1 << 0,
     four       = 1 << 1,
