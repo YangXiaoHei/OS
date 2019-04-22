@@ -15,7 +15,7 @@ int odd_ones_for_lowest_byte(unsigned x)
                 : "=r" (flags)
                 : "r" (x)
             );
-    int pf = GET_PF(flags);
+    int pf = (flags >> 2) & 1;
     return -1 + pf + pf;
 }
 
