@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+/*
+ * 返回是否采用算术右移
+ */
 int int_shifts_are_arithmetic(void)
 {
     int w = sizeof(int) << 3;

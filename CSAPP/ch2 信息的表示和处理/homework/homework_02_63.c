@@ -23,11 +23,11 @@ int sra(int x, int k)
      * 最重要的思路是那个 (z + ~(z & xsral))
      */
     int w = sizeof(x) << 3;
-    int z = 1 << (w - k - 1);
-    int rmask = z - 1;
-    int lmask = ~rmask;
-    int right = rmask & xsrl;
-    int left = lmask & (z + ~(z & xsrl));
+    int z = 1 << (w - k - 1);   /* 移动到符号位 */
+    int rmask = z - 1;          /* 右边的掩码，不包含符号位 */
+    int lmask = ~rmask;          /* 左边的掩码，包含符号位 */
+    int right = rmask & xsrl; 
+    int left = lmask & (z + ~(z & xsrl));    /* 这个思路有点牛逼 */
     return left | right;
 }
 

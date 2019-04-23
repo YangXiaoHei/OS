@@ -21,6 +21,10 @@ int odd_ones_for_lowest_byte(unsigned x)
 
 int odd_ones(unsigned x)
 {
+    /*
+     * 标志寄存器的 PF 位代表数据的最低字节中 1 是否是偶数个
+     * 那么就对 x 的每一个字节进行测试，并取出 PF 标志位
+     */
     int r0 = odd_ones_for_lowest_byte(x);
     int r1 = odd_ones_for_lowest_byte(x >> 8);
     int r2 = odd_ones_for_lowest_byte(x >> 16);
