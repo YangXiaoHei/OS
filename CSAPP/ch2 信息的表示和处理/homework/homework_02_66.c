@@ -9,6 +9,8 @@ int leftmost_one(unsigned x)
     x |= (x >> 4);
     x |= (x >> 8);
     x |= (x >> 16);
+    x >>= 1;
+    ++x;
     return x;
 }
 
