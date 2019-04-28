@@ -81,7 +81,8 @@ _inttype_ binaryStringTo##_suffix_(const char *binary)    \
     _inttype_ reg = 0;                           \
     int size = sizeof(reg) << 3;                 \
     unsigned char c;                             \
-    int i = 0, j = 0, k = 0;                     \
+    int i = 0, k = 0;                           \
+    long j = 0;                                 \
     size_t len = strlen(binary);                 \
     for (; k < len; k++) {                       \
         c = binary[len - k - 1];                 \
@@ -205,6 +206,7 @@ double tod64(const char *binary)
             continue;
         reg |= (binary[j] - '0') << i--;
     }
+    printf("%ld\n", reg);
     return *(double *)&reg;
 }
 
