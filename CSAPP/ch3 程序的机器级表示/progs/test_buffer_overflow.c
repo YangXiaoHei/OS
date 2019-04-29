@@ -11,12 +11,16 @@ void why_run_here(void)
 void my_call(void)
 {
     long buf[3];
-    buf[0] = 1;
-    buf[1] = 2;
     buf[5] = (long)why_run_here;
+}
+
+void last_call(void)
+{
+    printf("hello world\n");
 }
 
 int main(int argc, char *argv[])
 {
+    argv = (long)last_call;
     my_call();
 }

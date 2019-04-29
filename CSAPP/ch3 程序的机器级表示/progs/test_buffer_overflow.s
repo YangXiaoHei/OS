@@ -1,38 +1,55 @@
-_why_run_here:                          ## @why_run_here
+.LC0:
+	.string	"why run here\n"
+why_run_here:
 	pushq	%rbp
 	movq	%rsp, %rbp
-	subq	$16, %rsp
+	movl	$13, %edx
+	leaq	.LC0(%rip), %rsi
 	movl	$1, %edi
-	leaq	L_.str(%rip), %rsi
-	movl	$13, %eax
-	movl	%eax, %edx
-	callq	_write
-	movq	%rax, -8(%rbp)          ## 8-byte Spill
-	addq	$16, %rsp
+	call	write@PLT
+	nop
 	popq	%rbp
-	retq
+	ret
 
-_my_call:                               ## @my_call
+my_call:
 	pushq	%rbp
 	movq	%rsp, %rbp
-	leaq	_why_run_here(%rip), %rax
-	movq	$1, -32(%rbp)
-	movq	$2, -24(%rbp)
+	subq	$32, %rsp
+	movq	%fs:40, %rax
+	movq	%rax, -8(%rbp)
+	xorl	%eax, %eax
+	leaq	why_run_here(%rip), %rax
 	movq	%rax, 8(%rbp)
-	popq	%rbp
-	retq
+	nop
+	movq	-8(%rbp), %rax
+	xorq	%fs:40, %rax
+	je	.L3
+	call	__stack_chk_fail@PLT
+.L3:
+	leave
+	ret
+.LC1:
+	.string	"hello world"
 
-_main:                                  ## @main
+last_call:
+.LFB2:
+	pushq	%rbp
+	movq	%rsp, %rbp
+	leaq	.LC1(%rip), %rdi
+	call	puts@PLT
+	nop
+	popq	%rbp
+	ret
+
+main:
 	pushq	%rbp
 	movq	%rsp, %rbp
 	subq	$16, %rsp
 	movl	%edi, -4(%rbp)
 	movq	%rsi, -16(%rbp)
-	callq	_my_call
-	xorl	%eax, %eax
-	addq	$16, %rsp
-	popq	%rbp
-	retq
-
-L_.str:                                 ## @.str
-	.asciz	"why run here\n"
+	leaq	last_call(%rip), %rax
+	movq	%rax, -16(%rbp)
+	call	my_call
+	movl	$0, %eax
+	leave
+	ret
