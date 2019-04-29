@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 
-int main(int argc, char *argv[])
+void A(void)
 {
     /*
      * ffffff01
@@ -27,6 +27,10 @@ int main(int argc, char *argv[])
     int a = -(unsigned char)0xFF;
     printf("%x\n", a);
 
+}
+
+void B(void)
+{
     /*
      * 0xFF 是字面量，默认 int 型，因此对其求非结果是 0xFFFFFF01
      * 然后将其强转为无符号 char，即截断为 0x01
@@ -35,7 +39,10 @@ int main(int argc, char *argv[])
      */
     int b = (unsigned char)-0xFF;
     printf("%x\n", b);
+}
 
+void C(void)
+{
     /*
      * 0x1 是字面量，默认 int 型，即 0x00000001
      * 将其强转为无符号 char 即截断为 0x01
@@ -44,7 +51,11 @@ int main(int argc, char *argv[])
      */
     int c = -(unsigned char)0x1;
     printf("%x\n", c);
+    
+}
 
+void D(void)
+{
     /*
      * 0x1 是字面量，默认 int 型，即 0x00000001
      * 将其强转为 char 即截断为 0x01
@@ -53,7 +64,10 @@ int main(int argc, char *argv[])
      */
     int d = -(char)0x1;
     printf("%x\n", d);
+}
 
+void E(void)
+{
     /*
      * 0x80 是字面量，默认 int 型，即 0x00000080
      * 将其强转为 char ，即 0x80
@@ -62,4 +76,9 @@ int main(int argc, char *argv[])
      */
     int e = -(char)0x80;
     printf("%x\n", e);
+}
+
+int main(int argc, char *argv[])
+{
+
 }
