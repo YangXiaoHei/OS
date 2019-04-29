@@ -23,7 +23,7 @@ int tsub_ok(int x, int y)
     t >>= (w - 1);
     x >>= (w - 1);
     y >>= (w - 1);
-    return (x ^ y) && !(y ^ t);   
+    return (x ^ y) && !(t ^ y);   
 }
 
 int main(int argc, char *argv[])
