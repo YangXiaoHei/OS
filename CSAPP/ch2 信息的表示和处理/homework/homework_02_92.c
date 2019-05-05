@@ -10,16 +10,6 @@ unsigned float_negate(unsigned f)
     return f ^ (1 << 31);
 }
 
-float u2f(unsigned x)
-{
-    return *(float *)&x;
-}
-
-unsigned f2u(float x)
-{
-    return *(unsigned *)&x;
-}
-
 int main(int argc, char *argv[])
 {
     /*
