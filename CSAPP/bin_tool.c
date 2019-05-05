@@ -5,6 +5,26 @@
 
 static char _buf[128];
 
+unsigned f2u(float x)
+{
+    return *(unsigned *)&x;
+}
+
+float u2f(unsigned x)
+{
+    return *(float *)&x;
+}
+
+double ul2d(unsigned long x)
+{
+    return *(double *)&x;
+}
+
+unsigned long d2ul(double x)
+{
+    return *(unsigned long *)&x;
+}
+
 void show_bytes(void *vptr, ssize_t nbytes)
 {
     unsigned char *ptr = vptr;

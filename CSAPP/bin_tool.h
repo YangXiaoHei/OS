@@ -43,6 +43,11 @@ typedef enum EN_BIN_TOOL_TYPE {
     eight      = 1 << 2
 } EN_BIN_TOOL_TYPE;
 
+unsigned f2u(float x);
+float u2f(unsigned x);
+double ul2d(unsigned long x);
+unsigned long d2ul(double x);
+
 const char *f32(float a);
 const char *d64(double a);
 float tof32(const char *binary);
