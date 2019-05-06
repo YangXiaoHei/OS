@@ -16,13 +16,11 @@ unsigned float_twice(unsigned x)
     if (exp == 254)
         return (sign << 31) | (0xff << 23);
 
-    if (exp != 0) {
+    if (exp != 0) 
         exp++;
-    } else {
-        if (frac & (1 << 22))
-            exp = 1;
+     else 
         frac <<= 1;
-    }
+    
     return (sign << 31) | (exp << 23) | frac; 
 }
 
